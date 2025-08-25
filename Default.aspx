@@ -23,6 +23,8 @@
 
     <div class="row">
         <div id="divUnoViewer" class="col-sm-12">
+            <!-- JQUERY IS ADDED BY THE VIEWER, 
+                SET IncludeJQuery TO FALSE IF NOT REQUIRED -->
             <asp:UnoViewer ID="ctlUno" runat="server" AutoClose="true" IncludeJQuery="true" TimeOut="10" DebugMode="false" />
         </div>
     </div>
@@ -35,6 +37,7 @@
         var resizing = false;
         var isMobile = IsMobile();
 
+        // MAIN UNOVIEWER JS OBJECT 
         var objUno = null;
 
         if (typeof jQuery != 'undefined') {
