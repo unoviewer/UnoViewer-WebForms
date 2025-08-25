@@ -363,3 +363,4 @@ MigrationBackup/
 FodyWeavers.xsd
 /REFERENCE_DLL/Uno.Files.Extentions.dll
 /REFERENCE_DLL
+/unoViewer/UnoViewer.lic.xml
