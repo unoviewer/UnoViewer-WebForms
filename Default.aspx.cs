@@ -13,6 +13,28 @@ namespace UnoViewer_WebForms
         {
             if (!Page.IsPostBack)
             {
+                var fileName = "Sample.docx";
+                var viewFileFormat = ViewFileFormat.Doc;
+
+                // Other three file formats
+                if(!string.IsNullOrEmpty(Request.QueryString["file"]))
+                {
+                    fileName = Request.QueryString["file"];
+
+                    if(fileName == "Sample.ppt")
+                    {
+                        viewFileFormat = ViewFileFormat.Ppt;
+                    }
+                    else if (fileName == "Sample.xlsx")
+                    {
+                        viewFileFormat = ViewFileFormat.Xls;
+                    }
+                    else if (fileName == "Sample.pdf")
+                    {
+                        viewFileFormat = ViewFileFormat.Pdf;
+                    }
+                }
+
                 var pdfOptions = new PdfOptions
                 {
                     AllowSearch = true,
@@ -23,9 +45,6 @@ namespace UnoViewer_WebForms
                 BaseOptions fileOptions = null;
 
                 //  CHANGE THE FILE NAME AND FILE FORMAT HERE
-
-                var fileName = "Sample.docx";
-                var viewFileFormat = ViewFileFormat.Doc;
 
                 switch (viewFileFormat)
                 {
@@ -114,8 +133,6 @@ namespace UnoViewer_WebForms
                     throw new Exception("File not found " + filePath);
                 }
             }
-
-
         }
     }
 }

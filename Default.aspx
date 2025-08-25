@@ -94,7 +94,7 @@
 
 
                         objUno.on('fileOpen', function () {
-                            window.top.location.href = window.top.location.href;
+                            alert("File open called.");
                         });
 
                         objUno.on('fileClose', function () {
@@ -150,9 +150,27 @@
 
                     }
 
-                });
+                $(".menuWord .unoText").html("Word");
+                $(".menuExcel .unoText").html("Excel");
+                $(".menuPowerPoint .unoText").html("PowerPoint");
+                $(".menuPdf .unoText").html("PDF");
+
+                $(".menuWord").on("click", function () { OpenFile("Sample.docx"); });
+                $(".menuExcel").on("click", function () { OpenFile("Sample.xlsx"); });
+                $(".menuPowerPoint").on("click", function () { OpenFile("Sample.ppt"); });
+                $(".menuPdf").on("click", function () { OpenFile("Sample.pdf"); });
+
+            });
         }
 
+        function OpenFile(fileName) {
+
+            objUno.Close();
+            objUno.Loading(true);
+
+            setTimeout(function () { window.location.href = "default.aspx?file=" + fileName; }, 1000);
+
+        }
 
         function SetViewerHeight() {
             if (resizing === true) { return; }

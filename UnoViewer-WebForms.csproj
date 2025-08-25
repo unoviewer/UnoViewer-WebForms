@@ -144,7 +144,7 @@
     <Content Include="unoViewer\menu\desktop-menu.html" />
     <Content Include="unoViewer\menu\mobile-menu.html" />
     <Content Include="unoViewer\menu\search-box.html" />
-    <Content Include="unoViewer\UnoViewer.lic.xml" />
+    <None Include="unoViewer\UnoViewer.xml.licx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
