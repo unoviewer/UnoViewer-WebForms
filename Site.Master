@@ -22,13 +22,13 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="https://docs.unoviewer.com">Documentation</a>
+                            <a class="nav-link" target="_blank" href="https://docs.unoviewer.com">Documentation</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="https://github.com/unoviewer/UnoViewer-WebForms">Github</a>
+                            <a class="nav-link" target="_blank" href="https://github.com/unoviewer/UnoViewer-WebForms">Github</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="https://unoviewer.com">UnoViewer.com</a>
+                            <a class="nav-link" target="_blank" href="https://unoviewer.com">UnoViewer.com</a>
                         </li>
                     </ul>
                 </div>
