@@ -105,6 +105,18 @@
 
                         });
 
+                        objUno.on('viewerBusy', function () {
+
+                        });
+
+                        objUno.on('languageChanged', function (e) {
+                            // alert(e.langName);
+                        });
+
+                        objUno.on('themeChanged', function (e) {
+                            // alert(e.themeName);
+                        });
+
                         objUno.on('viewerReady', function () {
 
                         });
@@ -156,7 +168,7 @@
                 $(".menuPdf .unoText").html("PDF");
 
                 $(".menuWord").on("click", function () { OpenFile("Sample.docx"); });
-                $(".menuExcel").on("click", function () { OpenFile("Sample.xlsx"); });
+                $(".menuExcel").on("click", function () { OpenFile("Sample.xls"); });
                 $(".menuPowerPoint").on("click", function () { OpenFile("Sample.ppt"); });
                 $(".menuPdf").on("click", function () { OpenFile("Sample.pdf"); });
 

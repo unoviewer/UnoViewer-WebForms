@@ -25,7 +25,7 @@ namespace UnoViewer_WebForms
                     {
                         viewFileFormat = ViewFileFormat.Ppt;
                     }
-                    else if (fileName == "Sample.xlsx")
+                    else if (fileName == "Sample.xls")
                     {
                         viewFileFormat = ViewFileFormat.Xls;
                     }

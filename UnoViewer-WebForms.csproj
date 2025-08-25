@@ -144,6 +144,10 @@
     <Content Include="unoViewer\menu\desktop-menu.html" />
     <Content Include="unoViewer\menu\mobile-menu.html" />
     <Content Include="unoViewer\menu\search-box.html" />
+    <Content Include="files\Sample.docx" />
+    <Content Include="files\Sample.pdf" />
+    <Content Include="files\Sample.ppt" />
+    <Content Include="files\Sample.xls" />
     <None Include="unoViewer\UnoViewer.xml.licx" />
     <Content Include="Web.config" />
   </ItemGroup>
