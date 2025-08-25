@@ -5,3 +5,10 @@ UnoViewer is a .NET based multiple file format viewer. It can view Microsoft Off
 
 It is HTML5 / CSS & JavaScript based document viewer app. It does not need any software or plug-in
 installation and works across all modern browsers.
+
+Also see:
+
+## .NET Core MVC
+
+
+## Docker Linux

@@ -7,35 +7,51 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title></title>
-    <link href="Content/bootstrap.min.css" rel="stylesheet" />
-    <link href="Content/Site.css" rel="stylesheet" />
-    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <link href="~/css/site.css" rel="stylesheet" />
 </head>
-<body>
+<body class="d-flex flex-column">
     <form runat="server">
-        <div class="navbar navbar-inverse navbar-fixed-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" runat="server" href="https://webforms.unoviewer.com" target="_blank">UnoViewer ASP.NET 4.8 WebForms</a>
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="https://webforms.unoviewer.com" target="_blank">UnoViewer WebForms</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://docs.unoviewer.com">Documentation</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://unoviewer.com">Homepage</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
-        </div>
-        <div class="container body-content">
-            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+        </nav>
 
-            </asp:ContentPlaceHolder>
-            <hr />
-            <footer>
-                <p>&copy; <%: DateTime.Now.Year %> - UnoViewer.com
-                </p>
-            </footer>
-        </div>
+        <main>
+            <div class="container-fluid">
+
+                <asp:ContentPlaceHolder ID="MainContent" runat="server">
+                    <!-- Main Content -->
+
+                </asp:ContentPlaceHolder>
+
+            </div>
+        </main>
+
+        <footer class="footer mt-auto py-3 bg-light">
+            <div class="container text-center">
+                <span class="text-muted">&copy; <%: DateTime.Now.Year %> - UnoViewer.com</span>
+            </div>
+        </footer>
 
     </form>
+
+    <asp:ContentPlaceHolder ID="ScriptContent" runat="server">
+    </asp:ContentPlaceHolder>
 </body>
 </html>
