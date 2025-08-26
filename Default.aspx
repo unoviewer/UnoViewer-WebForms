@@ -46,121 +46,131 @@
 
                 if (typeof (<%= ctlUno.JsObject %>) !== 'undefined') {
 
-                        objUno = <%= ctlUno.JsObject %>;
+                    objUno = <%= ctlUno.JsObject %>;
 
 
-                        objUno.on('linkClicked', function (e) {
+                    objUno.on('linkClicked', function (e) {
 
-                            if (e.url && e.url.length > 0) {
-                                window.open(e.url);
-                            }
-                            else if (e.meta && e.meta.length > 0) {
-                                alert(e.meta);
-                            }
-
-                        });
-
-                        objUno.on('clipboardCopied', function (e) {
-
-                            navigator.clipboard.writeText(e.clipboard).then(() => {
-                                // alert("Successfully copied.");
-                            });
-
-                            // Optional call to change page to current
-                            // objUno.GotoPage(e.page);
-
-                        });
-
-                        objUno.on('textCopied', function (e) {
-
-                            navigator.clipboard.writeText(e.text).then(() => {
-                                // alert("Successfully copied.");
-                            });
-
-                        });
-
-
-                        objUno.on('viewerError', function (e) {
-                            alert(e.msg);
-                        });
-
-                        objUno.on('pageClicked', function (e) {
-                            // alert(e.page);
-                        });
-
-                        objUno.on('thumbnailClicked', function (e) {
-                            // alert(e.thumb);
-                        });
-
-
-                        objUno.on('fileOpen', function () {
-                            alert("File open called.");
-                        });
-
-                        objUno.on('fileClose', function () {
-                            objUno.Close();
-                        });
-
-                        objUno.on('splitterResized', function () {
-
-                        });
-
-                        objUno.on('viewerBusy', function () {
-
-                        });
-
-                        objUno.on('languageChanged', function (e) {
-                            // alert(e.langName);
-                        });
-
-                        objUno.on('themeChanged', function (e) {
-                            // alert(e.themeName);
-                        });
-
-                        objUno.on('viewerReady', function () {
-
-                        });
-
-                        objUno.on('pinchEnd', function (e) {
-
-                            objUno.ZoomStep(20);
-
-                            if (e.zoomMode == "ZoomIn") {
-                                objUno.Zoom(true);
-                            }
-                            else {
-                                objUno.Zoom(false);
-                            }
-
-                            objUno.ZoomStep(10);
-                        });
-
-
-                        // Attach Resize Event
-                        $(window).on("load resize orientationchange", function () {
-                            SetViewerHeight();
-                        });
-
-
-                        // Hide thumbnails when mobile
-                        if (isMobile) {
-                            objUno.ShowThumbnails(false);
+                        if (e.url && e.url.length > 0) {
+                            window.open(e.url);
+                        }
+                        else if (e.meta && e.meta.length > 0) {
+                            alert(e.meta);
                         }
 
+                    });
 
-                        // Prevent postback on enter key
+                    objUno.on('clipboardCopied', function (e) {
 
-                        $(document).keypress(function (e) {
-                            if (e.keyCode === 13) {
-                                e.preventDefault();
-                                return false;
-                            }
+                        navigator.clipboard.writeText(e.clipboard).then(() => {
+                            // alert("Successfully copied.");
                         });
 
-                        // Set height of the viewer
-                        SetViewerHeight();
+                        // Optional call to change page to current
+                        // objUno.GotoPage(e.page);
 
+                    });
+
+                    objUno.on('textCopied', function (e) {
+
+                        navigator.clipboard.writeText(e.text).then(() => {
+                            // alert("Successfully copied.");
+                        });
+
+                    });
+
+
+                    objUno.on('viewerError', function (e) {
+                        alert(e.msg);
+                    });
+
+                    objUno.on('pageClicked', function (e) {
+                        // alert(e.page);
+                    });
+
+                    objUno.on('thumbnailClicked', function (e) {
+                        // alert(e.thumb);
+                    });
+
+
+                    objUno.on('fileOpen', function () {
+                        alert("File open called.");
+                    });
+
+                    objUno.on('fileClose', function () {
+                        objUno.Close(true);
+                    });
+
+                    objUno.on('splitterResized', function () {
+
+                    });
+
+                    objUno.on('viewerBusy', function () {
+
+                    });
+
+                    objUno.on('languageChanged', function (e) {
+                        // alert(e.langName);
+
+                        setTimeout(function () {
+
+                            $(".menuWord .unoText").html("Word");
+                            $(".menuExcel .unoText").html("Excel");
+                            $(".menuPowerPoint .unoText").html("PowerPoint");
+                            $(".menuPdf .unoText").html("PDF");
+
+                        }, 500);
+
+                    });
+
+                    objUno.on('themeChanged', function (e) {
+                        // alert(e.themeName);
+                    });
+
+                    objUno.on('viewerReady', function () {
+
+                    });
+
+                    objUno.on('pinchEnd', function (e) {
+
+                        objUno.ZoomStep(20);
+
+                        if (e.zoomMode == "ZoomIn") {
+                            objUno.Zoom(true);
+                        }
+                        else {
+                            objUno.Zoom(false);
+                        }
+
+                        objUno.ZoomStep(10);
+                    });
+
+
+                    // Attach Resize Event
+                    $(window).on("load resize orientationchange", function () {
+                        SetViewerHeight();
+                    });
+
+
+                    // Hide thumbnails when mobile
+                    if (isMobile) {
+                        objUno.ShowThumbnails(false);
                     }
+
+
+                    // Prevent postback on enter key
+
+                    $(document).keypress(function (e) {
+                        if (e.keyCode === 13) {
+                            e.preventDefault();
+                            return false;
+                        }
+                    });
+
+                    // Set height of the viewer
+                    SetViewerHeight();
+
+                }
 
                 $(".menuWord .unoText").html("Word");
                 $(".menuExcel .unoText").html("Excel");
@@ -177,7 +187,7 @@
 
         function OpenFile(fileName) {
 
-            objUno.Close();
+            objUno.Close(true);
             objUno.Loading(true);
 
             setTimeout(function () { window.location.href = "default.aspx?file=" + fileName; }, 1000);
