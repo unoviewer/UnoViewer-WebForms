@@ -19,7 +19,18 @@
             height: 95vh;
             width: 98vw;
         }
+
+        #imgWait {
+            height: 25vh;
+            width: 25vw;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
     </style>
+
+    <img id="imgWait" src="unoViewer/img/loading-wait.svg" alt="Loading..." />
 
     <div class="row">
         <div id="divUnoViewer" class="col-sm-12">
@@ -128,7 +139,7 @@
                     });
 
                     objUno.on('viewerReady', function () {
-
+                        $("#imgWait").hide();
                     });
 
                     objUno.on('pinchEnd', function (e) {

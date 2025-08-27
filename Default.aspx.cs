@@ -62,7 +62,7 @@ namespace UnoViewer_WebForms
                         fileOptions = new ExcelOptions
                         {
                             PdfOptions = pdfOptions,
-                            ExportOnePagePerWorkSheet = true,
+                            ExportOnePagePerWorkSheet = true, // SPECIFY FALSE TO SPLIT WORKSHEET INTO PAGES
                             AutoFitContents = true,
                             RemoveEmptyContent = true
                         };
