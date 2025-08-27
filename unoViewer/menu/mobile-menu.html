@@ -792,7 +792,7 @@
         });
 
         $unoOpenLevel.on('click touchstart', function () {
-            $(this).next($navLevel).addClass('isOpen').css("position", "fixed");
+            $(this).next($navLevel).addClass('isOpen'); //.css("position", "fixed");
         });
 
         $unoCloseLevel.on('click touchstart', function () {
