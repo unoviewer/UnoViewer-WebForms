@@ -126,6 +126,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="README.md" />
+    <Content Include="REFERENCE_DLL\ReadMe.txt" />
     <Content Include="REFERENCE_DLL\Uno.Files.Extentions.dll" />
     <Content Include="REFERENCE_DLL\Uno.Files.Options.dll" />
     <Content Include="REFERENCE_DLL\Uno.Files.Viewer.dll" />
