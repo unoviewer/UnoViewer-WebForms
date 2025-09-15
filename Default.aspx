@@ -2,6 +2,19 @@
 
 <%@ Register Assembly="Uno.Files.Viewer" Namespace="Uno.Files.Viewer" TagPrefix="asp" %>
 
+<asp:Content ID="PageSeo" ContentPlaceHolderID="SeoContent" runat="server">
+
+<meta name="description" content="Asp.Net WebForms .NET 4.8 Samples UnoViewer. UnoViewer comes with lots of samples to get you started with implementing our WebForms document viewer for Asp.Net.">
+<meta name="keywords" content="webforms document viewer,asp.net webforms document viewer,webforms .net 4.8 C# document viewer">
+<link rel="canonical" href="https://webforms.unoviewer.com" />
+
+<meta property="og:title" content="Asp.Net WebForms .NET 4.8 Samples - UnoViewer">
+<meta property="og:type" content="article" />
+<meta property="og:description" content="UnoViewer comes with lots of samples to get you started with implementing our WebForms document viewer for Asp.Net.">
+<meta property="og:url" content="https://webforms.unoviewer.com">
+
+</asp:Content>
+
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
     <!-- menu css-->
