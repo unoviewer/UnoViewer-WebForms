@@ -16,40 +16,10 @@
 </asp:Content>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-
-    <!-- menu css-->
-    <link href="/unoViewer/css/desktop-menu.css" rel="stylesheet" />
-    <link href="/unoViewer/css/mobile-menu.css" rel="stylesheet" />
-
-    <!-- show hide menu-->
-    <link href="/unoViewer/css/uno-menu.css" rel="stylesheet" />
-
-
-    <style>
-        /* Container DIV */
-
-        #divUnoViewer {
-            height: 95vh;
-            width: 98vw;
-        }
-
-        #imgWait {
-            height: 25vh;
-            width: 25vw;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-    </style>
-
-    <img id="imgWait" src="unoViewer/img/loading-wait.svg" alt="Loading..." />
-
     <div class="row">
         <div id="divUnoViewer" class="col-sm-12">
-            <!-- JQUERY IS ADDED BY THE VIEWER, 
-                SET IncludeJQuery TO FALSE IF NOT REQUIRED -->
-            <asp:UnoViewer ID="ctlUno" runat="server" AutoClose="true" IncludeJQuery="true" TimeOut="10" DebugMode="false" />
+            <!-- JQUERY IS ADDED ON PAGE, HENCE DISABLED IN THE VIEWER -->
+            <asp:UnoViewer ID="ctlUno" runat="server" AutoClose="true" IncludeJQuery="false" TimeOut="10" DebugMode="false" />
         </div>
     </div>
 </asp:Content>

@@ -36,4 +36,13 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ScriptContent" runat="server">
+
+       <script>
+
+           $(document).ready(function () {
+               $("#imgWait").hide();
+           });
+
+       </script>
+
 </asp:Content>
