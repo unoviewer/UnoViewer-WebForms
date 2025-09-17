@@ -7,26 +7,19 @@ using Uno.Files.Viewer;
 
 namespace UnoViewer_WebForms.Samples
 {
-    public partial class Custom_Menu : Page
+    public partial class Menu_Items : Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
             {
-                var fileName = "Sample.ppt";
-                var viewFileFormat = ViewFileFormat.Ppt;
+                var fileName = "Sample.docx";
+                var viewFileFormat = ViewFileFormat.Docx;
 
-                var pdfOptions = new PdfOptions
-                {
-                    AllowSearch = true,
-                    ExtractHyperlinks = true,
-                    ExtractTexts = true
-                };
 
-                BaseOptions fileOptions = new PptOptions
+                BaseOptions fileOptions = new WordOptions
                 {
-                    ConvertPdf = true,
-                    PdfOptions = pdfOptions
+                    ConvertPdf = false
                 };
 
 
@@ -36,8 +29,15 @@ namespace UnoViewer_WebForms.Samples
                 {
                     var bytes = File.ReadAllBytes(filePath);
 
-                    // Hide the default toolbar
-                    ctlUno.ViewerSettings.ShowToolbar = false;
+                    // Specify which menu items to hide
+
+                    ctlUno.ViewerSettings.MenuSettings.File = false;
+                    ctlUno.ViewerSettings.MenuSettings.PageMode = false;
+                    ctlUno.ViewerSettings.MenuSettings.Search = false; // Removing search, as ConvertPdf is false
+                    ctlUno.ViewerSettings.MenuSettings.FullScreen = false;
+                    ctlUno.ViewerSettings.MenuSettings.Flip = false;
+                    ctlUno.ViewerSettings.MenuSettings.Rotate = false;
+                    ctlUno.ViewerSettings.MenuSettings.Language = false;
 
                     ctlUno.ViewerSettings.ShowToolTip = true;
                     ctlUno.ViewerSettings.LangFile = "en.json";
@@ -64,9 +64,9 @@ namespace UnoViewer_WebForms.Samples
 
                     var waterMark = new WaterMark
                     {
-                        TextMark = "Custom Menu",
+                        TextMark = "Menu Items",
                         Color = Color.Black,
-                        Font = new Font("Verdana", 16),
+                        Font = new Font("Verdana", 12),
                         Opacity = 50,
                         Angle = -45,
                         ShowOnCorners = true

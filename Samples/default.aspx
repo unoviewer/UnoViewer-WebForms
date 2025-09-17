@@ -20,10 +20,21 @@
             <div class="col">
                 <div class="card mb-4 rounded-3 shadow-sm">
                     <div class="card-header py-3">
+                        <h4 class="my-0 fw-normal">Modify Menu</h4>
+                    </div>
+                    <div class="card-body">
+                        <p>Modify the default menu, disable few menu items of the menu.</p>
+                        <a href="/Samples/Menu-Items.aspx" class="w-100 btn btn-lg btn-outline-primary" onclick="ShowWait();">Modify Menu Demo</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card mb-4 rounded-3 shadow-sm">
+                    <div class="card-header py-3">
                         <h4 class="my-0 fw-normal">Custom Menu</h4>
                     </div>
                     <div class="card-body">
-                        <p>This page is about implementing your own external menu instead of the default menu.</p>
+                        <p>Implement your own external menu instead of the default viewer menu.</p>
                         <a href="/Samples/Custom-Menu.aspx" class="w-100 btn btn-lg btn-outline-primary" onclick="ShowWait();">Custom Menu Demo</a>
                     </div>
                 </div>

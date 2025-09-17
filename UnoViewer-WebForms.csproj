@@ -132,6 +132,7 @@
     <Content Include="REFERENCE_DLL\Uno.Files.Viewer.dll" />
     <Content Include="Samples\Custom-Menu.aspx" />
     <Content Include="Samples\default.aspx" />
+    <Content Include="Samples\Menu-Items.aspx" />
     <Content Include="Site.Master" />
     <Content Include="unoViewer\css\desktop-menu.css" />
     <Content Include="unoViewer\css\mobile-menu.css" />
@@ -181,6 +182,13 @@
     </Compile>
     <Compile Include="Samples\default.aspx.designer.cs">
       <DependentUpon>default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Samples\Menu-Items.aspx.cs">
+      <DependentUpon>Menu-Items.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Samples\Menu-Items.aspx.designer.cs">
+      <DependentUpon>Menu-Items.aspx</DependentUpon>
     </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
