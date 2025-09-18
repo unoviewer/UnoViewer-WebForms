@@ -74,7 +74,7 @@
             setTimeout(function () {
 
                 var h = "innerHeight" in window ? window.innerHeight : document.documentElement.offsetHeight;
-                $("#divUnoViewer").height(h - 180); // Adjust as required on your page
+                $("#divUnoViewer").height(h - 130); // Adjust as required on your page
 
                 resizing = false;
 

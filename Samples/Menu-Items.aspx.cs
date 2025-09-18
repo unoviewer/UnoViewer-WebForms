@@ -13,11 +13,11 @@ namespace UnoViewer_WebForms.Samples
         {
             if (!Page.IsPostBack)
             {
-                var fileName = "Sample.docx";
-                var viewFileFormat = ViewFileFormat.Docx;
+                var fileName = "Sample.ppt";
+                var viewFileFormat = ViewFileFormat.Ppt;
 
 
-                BaseOptions fileOptions = new WordOptions
+                BaseOptions fileOptions = new PptOptions
                 {
                     ConvertPdf = false
                 };
