@@ -39,8 +39,20 @@
                     </div>
                 </div>
             </div>
+            <div class="col">
+                <div class="card mb-4 rounded-3 shadow-sm">
+                    <div class="card-header py-3">
+                        <h4 class="my-0 fw-normal">Bootstrap Dialog</h4>
+                    </div>
+                    <div class="card-body">
+                        <p>How to use bootstrap modal dialog to show a document preview.</p>
+                        <a href="/Samples/Bootstrap-Modal.aspx" class="w-100 btn btn-lg btn-outline-primary" onclick="ShowWait();">Bootstrap Modal Demo</a>
+                    </div>
+                </div>
+            </div>
         </div>
-
+        <br />
+         <br />
     </div>
 
 </asp:Content>

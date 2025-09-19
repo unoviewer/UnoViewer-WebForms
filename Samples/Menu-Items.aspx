@@ -15,6 +15,14 @@
 </asp:Content>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+
+    <style>
+         #divUnoViewer {
+             height: 95vh;
+             width: 97vw;
+         }
+    </style>
+
     <div id="divUnoViewer" class="col-sm-12">
         <!-- JQUERY IS ADDED ON PAGE, HENCE DISABLED IN THE VIEWER -->
         <asp:UnoViewer ID="ctlUno" runat="server" AutoClose="true" IncludeJQuery="false" TimeOut="10" DebugMode="false" />

@@ -130,6 +130,7 @@
     <Content Include="REFERENCE_DLL\Uno.Files.Extentions.dll" />
     <Content Include="REFERENCE_DLL\Uno.Files.Options.dll" />
     <Content Include="REFERENCE_DLL\Uno.Files.Viewer.dll" />
+    <Content Include="Samples\Bootstrap-Modal.aspx" />
     <Content Include="Samples\Custom-Menu.aspx" />
     <Content Include="Samples\default.aspx" />
     <Content Include="Samples\Menu-Items.aspx" />
@@ -169,6 +170,13 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Samples\Bootstrap-Modal.aspx.cs">
+      <DependentUpon>Bootstrap-Modal.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Samples\Bootstrap-Modal.aspx.designer.cs">
+      <DependentUpon>Bootstrap-Modal.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Samples\Custom-Menu.aspx.cs">
       <DependentUpon>Custom-Menu.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
