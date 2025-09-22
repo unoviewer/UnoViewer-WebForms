@@ -42,6 +42,22 @@
 
             if (typeof (<%= ctlUno.JsObject %>) !== 'undefined') {
                 objUno = <%= ctlUno.JsObject %>;
+
+
+                objUno.on('pinchEnd', function (e) {
+
+                    objUno.ZoomStep(20);
+
+                    if (e.zoomMode == "ZoomIn") {
+                        objUno.Zoom(true);
+                    }
+                    else {
+                        objUno.Zoom(false);
+                    }
+
+                    objUno.ZoomStep(10);
+                });
+
             }
 
             // Attach Resize Event
@@ -50,6 +66,7 @@
             });
 
             SetViewerHeight();
+
         });
 
         function ToggleFullScreen() {
