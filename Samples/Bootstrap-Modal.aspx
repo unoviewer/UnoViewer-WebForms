@@ -24,9 +24,17 @@
          }
     </style>
 
-    <button type="button" id="btnModal" data-token="" class="btn btn-primary mt-3 ms-3" onclick="LoadDocument()">
+    <button type="button" id="btnModal" data-token="" class="btn btn-primary mt-5 ms-3" onclick="LoadDocument()">
        PowerPoint Modal
     </button>
+
+    <div class="container mt-3">
+        <ul>
+            <li>Click the button to open the SlideShow.</li>
+            <li>The token is saved in <i>data-token</i> attribute.</li>
+            <li>Use this token to prevent re-loading the same file.</li>
+        </ul>
+    </div>
 
     <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-fullscreen">
