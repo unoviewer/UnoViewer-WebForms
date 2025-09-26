@@ -16,12 +16,10 @@ namespace UnoViewer_WebForms.Samples
                 var fileName = "Sample.ppt";
                 var viewFileFormat = ViewFileFormat.Ppt;
 
-
                 BaseOptions fileOptions = new PptOptions
                 {
                     ConvertPdf = false
                 };
-
 
                 var filePath = Path.Combine(Server.MapPath("~/files/"), fileName);
 
