@@ -60,6 +60,34 @@
                     $("#imgWait").hide();
                 });
 
+                objUnoOne.on('pinchEnd', function (e) {
+
+                    objUnoOne.ZoomStep(20);
+
+                    if (e.zoomMode == "ZoomIn") {
+                        objUnoOne.Zoom(true);
+                    }
+                    else {
+                        objUnoOne.Zoom(false);
+                    }
+
+                    objUnoOne.ZoomStep(10);
+                });
+
+                objUnoTwo.on('pinchEnd', function (e) {
+
+                    objUnoTwo.ZoomStep(20);
+
+                    if (e.zoomMode == "ZoomIn") {
+                        objUnoTwo.Zoom(true);
+                    }
+                    else {
+                        objUnoTwo.Zoom(false);
+                    }
+
+                    objUnoTwo.ZoomStep(10);
+                });
+
             }
 
             // Attach Resize Event

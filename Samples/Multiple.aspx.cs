@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Drawing;
 using System.IO;
 using System.Web.UI;
 using Uno.Files.Options;
+using Uno.Files.Viewer;
 
 namespace UnoViewer_WebForms.Samples
 {
@@ -11,14 +13,40 @@ namespace UnoViewer_WebForms.Samples
         {
             if (!Page.IsPostBack)
             {
-                ctlUnoOne.ViewerSettings.LangFile = "en.json";
-                ctlUnoTwo.ViewerSettings.LangFile = "en.json";
-
                 ctlUnoOne.ViewerSettings.ThumbSettings.ThumbWidth = 70;
+                ctlUnoOne.ViewerSettings.MenuSettings.Search = false;  // ConvertPdf = false
+
+
                 ctlUnoTwo.ViewerSettings.ThumbSettings.ThumbWidth = 70;
+                ctlUnoTwo.ViewerSettings.MenuSettings.Search = false;  // ConvertPdf = false
+
 
                 var fileNameOne = "Sample.ppt";
                 var fileNameTwo = "Sample.docx";
+
+                var waterMarkOne = new WaterMark
+                {
+                    TextMark = "One PPT",
+                    Color = Color.Red,
+                    Font = new Font("Verdana", 18),
+                    Opacity = 75,
+                    Angle = -45,
+                    ShowOnCorners = true
+                };
+
+                ctlUnoOne.ApplyWatermark(waterMarkOne);
+
+                var waterMarkTwo = new WaterMark
+                {
+                    TextMark = "Two DOC",
+                    Color = Color.Blue,
+                    Font = new Font("Verdana", 18),
+                    Opacity = 75,
+                    Angle = -45,
+                    ShowOnCorners = true
+                };
+
+                ctlUnoTwo.ApplyWatermark(waterMarkTwo);
 
                 BaseOptions fileOptionsOne = new PptOptions
                 {
