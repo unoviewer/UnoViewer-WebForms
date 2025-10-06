@@ -15,11 +15,11 @@ namespace UnoViewer_WebForms.Samples
             {
                 ctlUnoOne.ViewerSettings.ThumbSettings.ThumbWidth = 70;
                 ctlUnoOne.ViewerSettings.MenuSettings.Search = false;  // ConvertPdf = false
-
+                ctlUnoOne.ViewerSettings.MenuSettings.File = false;
 
                 ctlUnoTwo.ViewerSettings.ThumbSettings.ThumbWidth = 70;
                 ctlUnoTwo.ViewerSettings.MenuSettings.Search = false;  // ConvertPdf = false
-
+                ctlUnoTwo.ViewerSettings.MenuSettings.File = false;
 
                 var fileNameOne = "Sample.ppt";
                 var fileNameTwo = "Sample.docx";
