@@ -135,6 +135,7 @@
     <Content Include="Samples\default.aspx" />
     <Content Include="Samples\Menu-Items.aspx" />
     <Content Include="Samples\Multiple.aspx" />
+    <Content Include="Samples\Pdf-Export-Print.aspx" />
     <Content Include="Site.Master" />
     <Content Include="unoViewer\css\desktop-menu.css" />
     <Content Include="unoViewer\css\mobile-menu.css" />
@@ -155,6 +156,7 @@
     <Content Include="files\Sample.pdf" />
     <Content Include="files\Sample.ppt" />
     <Content Include="files\Sample.xls" />
+    <Content Include="files\uploads\web.config" />
     <None Include="unoViewer\UnoViewer.xml.licx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -205,6 +207,13 @@
     </Compile>
     <Compile Include="Samples\Multiple.aspx.designer.cs">
       <DependentUpon>Multiple.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Samples\Pdf-Export-Print.aspx.cs">
+      <DependentUpon>Pdf-Export-Print.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Samples\Pdf-Export-Print.aspx.designer.cs">
+      <DependentUpon>Pdf-Export-Print.aspx</DependentUpon>
     </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
