@@ -14,6 +14,9 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/print-js/1.6.0/print.min.js" integrity="sha512-16cHhHqb1CbkfAWbdF/jgyb/FDZ3SdQacXG8vaOauQrHhpklfptATwMFAc35Cd62CQVN40KDTYo9TIsQhDtMFg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/print-js/1.6.0/print.min.css" integrity="sha512-zrPsLVYkdDha4rbMGgk9892aIBPeXti7W77FwOuOBV85bhRYi9Gh+gK+GWJzrUnaCiIEm7YfXOxW8rzYyTuI1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <style>
         #MainContent_fileUpload {
             width: 80%;
@@ -31,8 +34,13 @@
         <%if (ViewState["pdf_file"] != null)
             {  %>
         <div id="pdfContainer" class="p-5">
-            <input type="button" class="btn btn-primary mb-2" value="Print" onclick="printEmbedPdf();" />
-            <embed id="pdfEmbed" name="pdfEmbed" src="/files/uploads/<%= ViewState["pdf_file"]%>" type="application/pdf" width="100%" height="500px" title="Embedded PDF Document">
+            <input type="button" class="btn btn-primary mb-2" value="Print" onclick="printEmbedPdf('/files/uploads/<%= ViewState["pdf_file"]%>');" />
+
+            <object id="pdfEmbed" name="pdfEmbed" data="/files/uploads/<%= ViewState["pdf_file"]%>" type="application/pdf" width="100%" height="500px">
+                <iframe src="/files/uploads/<%= ViewState["pdf_file"]%>" width="100%" height="500px">
+                    <p>Your browser does not support iframes. You can <a href="/files/uploads/<%= ViewState["pdf_file"]%>">download the PDF</a> instead.</p>
+                </iframe>
+            </object>
         </div>
         <% }  %>
     </div>
@@ -75,7 +83,11 @@
             }
         }
 
-        function printEmbedPdf() {
+        function printEmbedPdf(pdfPath) {
+
+            printJS(pdfPath); 
+
+            /*
             const pdfEmbed = document.getElementById('pdfEmbed');
             if (pdfEmbed && pdfEmbed.src) {
                 const pdfUrl = pdfEmbed.src;
@@ -86,6 +98,7 @@
                     };
                 }
             }
+            */
         }
 
     </script>
