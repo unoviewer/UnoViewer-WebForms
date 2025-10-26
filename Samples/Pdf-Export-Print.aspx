@@ -85,20 +85,27 @@
 
         function printEmbedPdf(pdfPath) {
 
-            printJS(pdfPath); 
+            var options = {
+                printable: pdfPath,
+                type: "pdf",
+            };
 
-            /*
-            const pdfEmbed = document.getElementById('pdfEmbed');
-            if (pdfEmbed && pdfEmbed.src) {
-                const pdfUrl = pdfEmbed.src;
-                const printWindow = window.open(pdfUrl, '_blank');
-                if (printWindow) {
-                    printWindow.onload = function () {
-                        printWindow.print();
-                    };
-                }
+
+            if (-1 !== navigator.userAgent.toLowerCase().indexOf('crios') || -1 !== navigator.userAgent.toLowerCase().indexOf('fxios')) {
+                const printWindow = window.open('', '_blank');
+
+                printWindow.document.write('<html><head><title>Print</title></head><body>');
+                printWindow.document.write('<img style="height: 100%; width: auto;" src="' + options.printable + '"/>');
+                printWindow.document.write('</body></html>');
+
+                setTimeout(function () {
+                    printWindow.print();
+                    printWindow.close();
+                }, 100);
+
+            } else {
+                printJS(options);
             }
-            */
         }
 
     </script>
