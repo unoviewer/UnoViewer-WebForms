@@ -31,8 +31,8 @@
         <%if (ViewState["pdf_file"] != null)
             {  %>
         <div id="pdfContainer" class="p-5">
-            <input type="button" class="btn btn-primary mb-2" value="Print" onclick="printIframePdf();" />
-            <iframe id="pdfFrame" name="pdfFrame" src="/files/uploads/<%= ViewState["pdf_file"]%>" width="100%" height="500px" style="border: none;"></iframe>
+            <input type="button" class="btn btn-primary mb-2" value="Print" onclick="printEmbedPdf();" />
+            <embed id="pdfEmbed" name="pdfEmbed" src="/files/uploads/<%= ViewState["pdf_file"]%>" type="application/pdf" width="100%" height="500px" title="Embedded PDF Document">
         </div>
         <% }  %>
     </div>
@@ -75,17 +75,16 @@
             }
         }
 
-        function printIframePdf() {
-            const iframe = document.getElementById("pdfFrame");
-
-            // Ensure the iframe exists and its content is loaded
-            if (iframe && iframe.contentWindow) {
-                // Focus the iframe's content window to ensure the print dialog targets it
-                iframe.contentWindow.focus();
-                // Call the print method on the iframe's content window
-                iframe.contentWindow.print();
-            } else {
-                console.error('Iframe not found or content not loaded.');
+        function printEmbedPdf() {
+            const pdfEmbed = document.getElementById('pdfEmbed');
+            if (pdfEmbed && pdfEmbed.src) {
+                const pdfUrl = pdfEmbed.src;
+                const printWindow = window.open(pdfUrl, '_blank');
+                if (printWindow) {
+                    printWindow.onload = function () {
+                        printWindow.print();
+                    };
+                }
             }
         }
 
