@@ -30,7 +30,7 @@
             <br />
             <asp:Button ID="btnUpload" CssClass="btn btn-primary" runat="server" OnClick="btnUpload_Click" Text="Pdf Export" OnClientClick="return ValidateUpload(true);" />
             <%if (ViewState["pdf_file"] != null)
-                {  %><input type="button" class="btn btn-primary ms-3" value="Print Pdf" onclick="printEmbedPdf('<%= ViewState["pdf_file"]%>');" />
+                {  %><input type="button" class="btn btn-info ms-3" value="Print Pdf" onclick="printEmbedPdf('<%= ViewState["pdf_file"]%>');" />
             <% }  %>
         </div>
         <%if (ViewState["pdf_file"] != null)
