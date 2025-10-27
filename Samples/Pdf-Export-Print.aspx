@@ -34,7 +34,7 @@
         <%if (ViewState["pdf_file"] != null)
             {  %>
         <div id="pdfContainer" class="p-5">
-            <input type="button" class="btn btn-primary mb-2" value="Print" onclick="printEmbedPdf('/files/uploads/<%= ViewState["pdf_file"]%>');" />
+            <input type="button" class="btn btn-primary mb-2" value="Print" onclick="printEmbedPdf('<%= ViewState["pdf_file"]%>');" />
 
             <object id="pdfEmbed" name="pdfEmbed" data="/files/uploads/<%= ViewState["pdf_file"]%>" type="application/pdf" width="100%" height="500px">
                 <iframe src="/files/uploads/<%= ViewState["pdf_file"]%>" width="100%" height="500px">
@@ -83,29 +83,38 @@
             }
         }
 
-        function printEmbedPdf(pdfPath) {
+        function printEmbedPdf(pdfFile) {
 
-            var options = {
-                printable: pdfPath,
-                type: "pdf",
-            };
-
-
-            if (-1 !== navigator.userAgent.toLowerCase().indexOf('crios') || -1 !== navigator.userAgent.toLowerCase().indexOf('fxios')) {
-                const printWindow = window.open('', '_blank');
-
-                printWindow.document.write('<html><head><title>Print</title></head><body>');
-                printWindow.document.write('<img style="height: 100%; width: auto;" src="' + options.printable + '"/>');
-                printWindow.document.write('</body></html>');
-
-                setTimeout(function () {
-                    printWindow.print();
-                    printWindow.close();
-                }, 100);
-
-            } else {
-                printJS(options);
+            if (isMobileDevice()) {
+                window.location.href = "print.aspx?pdf_file=" + pdfFile;
             }
+            else {
+
+                var options = {
+                    printable: '/files/uploads/' + pdfFile,
+                    type: "pdf"
+                };
+
+                if (-1 !== navigator.userAgent.toLowerCase().indexOf('crios') || -1 !== navigator.userAgent.toLowerCase().indexOf('fxios')) {
+                    const printWindow = window.open('', '_blank');
+
+                    printWindow.document.write('<html><head><title>Print</title></head><body>');
+                    printWindow.document.write('<img style="height: 100%; width: auto;" src="' + options.printable + '"/>');
+                    printWindow.document.write('</body></html>');
+
+                    setTimeout(function () {
+                        printWindow.print();
+                        printWindow.close();
+                    }, 100);
+
+                } else {
+                    printJS(options);
+                }
+            }
+        }
+
+        function isMobileDevice() {
+            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
         }
 
     </script>
