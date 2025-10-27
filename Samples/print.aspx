@@ -9,10 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
     <style>
         /* Styles for the canvas and print media */
-        #pdf-viewer {
-            display: none; /* Hide the main canvas during normal viewing if not needed */
-        }
-
+       
         #print-container {
             display: none;
         }
