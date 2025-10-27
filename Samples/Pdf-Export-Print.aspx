@@ -29,13 +29,13 @@
             <asp:FileUpload CssClass="form-control form-control-lg" ID="fileUpload" runat="server" accept=".doc, .docx, .ppt, .pptx, .pps" />
             <br />
             <asp:Button ID="btnUpload" CssClass="btn btn-primary" runat="server" OnClick="btnUpload_Click" Text="Pdf Export" OnClientClick="return ValidateUpload(true);" />
+            <%if (ViewState["pdf_file"] != null)
+                {  %><input type="button" class="btn btn-primary ms-3" value="Print Pdf" onclick="printEmbedPdf('<%= ViewState["pdf_file"]%>');" />
+            <% }  %>
         </div>
-
         <%if (ViewState["pdf_file"] != null)
             {  %>
-        <div id="pdfContainer" class="p-5">
-            <input type="button" class="btn btn-primary mb-2" value="Print" onclick="printEmbedPdf('<%= ViewState["pdf_file"]%>');" />
-
+        <div id="pdfContainer" class="p-2">
             <object id="pdfEmbed" name="pdfEmbed" data="/files/uploads/<%= ViewState["pdf_file"]%>" type="application/pdf" width="100%" height="500px">
                 <iframe src="/files/uploads/<%= ViewState["pdf_file"]%>" width="100%" height="500px">
                     <p>Your browser does not support iframes. You can <a href="/files/uploads/<%= ViewState["pdf_file"]%>">download the PDF</a> instead.</p>

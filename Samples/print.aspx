@@ -37,7 +37,7 @@
     </style>
 </head>
 <body>
-    <div class="m-3"><button id="print-button" class="btn btn-primary">Print PDF</button><button class="btn btn-info ms-2" onclick="history.back()">Back</button>
+    <div class="m-3"><button id="print-button" class="btn btn-primary">Print</button><button class="btn btn-info ms-2" onclick="history.back()">Back</button>
        <div id="div-log" class="mt-2"></div>
     </div>
     <div id="print-container"></div>
