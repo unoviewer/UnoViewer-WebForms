@@ -36,7 +36,9 @@
     </style>
 </head>
 <body>
-    <div class="m-3"><button id="print-button" class="btn btn-primary">Print PDF</button><button class="btn btn-info ms-2" onclick="history.back()">Back</button></div>
+    <div class="m-3"><button id="print-button" class="btn btn-primary">Print PDF</button><button class="btn btn-info ms-2" onclick="history.back()">Back</button>
+       <div id="div-log" class="mt-2"></div>
+    </div>
     <div id="print-container"></div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.6.82/pdf.min.mjs" type="module"></script>
@@ -56,7 +58,12 @@
             // Clear previous canvases if any
             printContainer.innerHTML = '';
 
+            var divLog = document.getElementById("div-log");
+
             for (let i = 1; i <= pdf.numPages; i++) {
+
+                divLog.innerHTML = 'Loading ' + i + " of " + pdf.numPages;
+
                 const page = await pdf.getPage(i);
                 const viewport = page.getViewport({ scale: 1.5 }); // Adjust scale as needed for print quality
 
