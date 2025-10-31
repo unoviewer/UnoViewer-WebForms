@@ -136,7 +136,6 @@
     <Content Include="Samples\Menu-Items.aspx" />
     <Content Include="Samples\Multiple.aspx" />
     <Content Include="Samples\Pdf-Export-Print.aspx" />
-    <Content Include="Samples\print.aspx" />
     <Content Include="Site.Master" />
     <Content Include="unoViewer\css\desktop-menu.css" />
     <Content Include="unoViewer\css\mobile-menu.css" />
@@ -215,13 +214,6 @@
     </Compile>
     <Compile Include="Samples\Pdf-Export-Print.aspx.designer.cs">
       <DependentUpon>Pdf-Export-Print.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Samples\print.aspx.cs">
-      <DependentUpon>print.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Samples\print.aspx.designer.cs">
-      <DependentUpon>print.aspx</DependentUpon>
     </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>

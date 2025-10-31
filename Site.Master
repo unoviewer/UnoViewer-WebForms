@@ -42,6 +42,8 @@
 
     <!-- show hide menu-->
     <link href="/unoViewer/css/uno-menu.css" rel="stylesheet" />
+
+     <asp:ContentPlaceHolder ID="HeaderLinks" runat="server"></asp:ContentPlaceHolder>
 </head>
 <body class="d-flex flex-column">
     <form runat="server">

@@ -1,7 +1,6 @@
 ﻿<%@ Page Title="Pdf Export Print - UnoViewer" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Pdf-Export-Print.aspx.cs" Inherits="UnoViewer_WebForms.Samples.Pdf_Export_Print" %>
 
 <asp:Content ID="PageSeo" ContentPlaceHolderID="SeoContent" runat="server">
-
     <meta name="description" content="UnoViewer sample that shows how to export Word, PowerPoint and Excel files to PDF and also print them from browser.">
     <meta name="keywords" content="word to pdf,powerpoint to pdf,excel to pdf,web based pdf file printer,office to pdf export online">
     <link rel="canonical" href="https://webforms.unoviewer.com/samples/pdf-export-print.aspx" />
@@ -12,16 +11,49 @@
     <meta property="og:url" content="https://webforms.unoviewer.com/samples/pdf-export-print.aspx">
 </asp:Content>
 
-<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+<asp:Content ID="Links" ContentPlaceHolderID="HeaderLinks" runat="server">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/print-js/1.6.0/print.min.js" integrity="sha512-16cHhHqb1CbkfAWbdF/jgyb/FDZ3SdQacXG8vaOauQrHhpklfptATwMFAc35Cd62CQVN40KDTYo9TIsQhDtMFg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/print-js/1.6.0/print.min.css" integrity="sha512-zrPsLVYkdDha4rbMGgk9892aIBPeXti7W77FwOuOBV85bhRYi9Gh+gK+GWJzrUnaCiIEm7YfXOxW8rzYyTuI1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.6.82/pdf.min.mjs" type="module"></script>
 
     <style>
         #MainContent_fileUpload {
             width: 80%;
         }
+
+        #print-container {
+            display: none;
+        }
+
+        /* Styles for the canvas and print media */
+
+        @media print {
+           
+            .container, .container-fluid {
+                width: auto;
+                display: block !important;
+            }
+
+            #print-container {
+                display: block;
+            }
+
+            canvas {
+                page-break-after: always; /* Ensure each canvas renders on a new page */
+            }
+
+                canvas:last-child {
+                    page-break-after: avoid; /* Prevent an extra blank page at the end */
+                }
+        }
     </style>
+
+</asp:Content>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+
+    <div id="print-container"></div>
 
     <div class="row">
         <div class="p-5">
@@ -30,7 +62,11 @@
             <br />
             <asp:Button ID="btnUpload" CssClass="btn btn-primary" runat="server" OnClick="btnUpload_Click" Text="Pdf Export" OnClientClick="return ValidateUpload(true);" />
             <%if (ViewState["pdf_file"] != null)
-                {  %><input type="button" class="btn btn-info ms-3" value="Print Pdf" onclick="printEmbedPdf('<%= ViewState["pdf_file"]%>');" />
+                {  %><input type="button" class="btn btn-info ms-3" value="Print Pdf" id="print-button" />
+
+            <div class="m-3">
+                <div id="div-log" class="mt-2"></div>
+            </div>
             <% }  %>
         </div>
         <%if (ViewState["pdf_file"] != null)
@@ -42,6 +78,9 @@
                 </iframe>
             </object>
         </div>
+
+        <input type="hidden" id="pdfFile" value="<%= ViewState["pdf_file"] %>" />
+
         <% }  %>
     </div>
 
@@ -83,39 +122,104 @@
             }
         }
 
-        function printEmbedPdf(pdfFile) {
-
-            if (isMobileDevice()) {
-                window.location.href = "print.aspx?pdf_file=" + pdfFile;
-            }
-            else {
-
-                var options = {
-                    printable: '/files/uploads/' + pdfFile,
-                    type: "pdf"
-                };
-
-                if (-1 !== navigator.userAgent.toLowerCase().indexOf('crios') || -1 !== navigator.userAgent.toLowerCase().indexOf('fxios')) {
-                    const printWindow = window.open('', '_blank');
-
-                    printWindow.document.write('<html><head><title>Print</title></head><body>');
-                    printWindow.document.write('<img style="height: 100%; width: auto;" src="' + options.printable + '"/>');
-                    printWindow.document.write('</body></html>');
-
-                    setTimeout(function () {
-                        printWindow.print();
-                        printWindow.close();
-                    }, 100);
-
-                } else {
-                    printJS(options);
-                }
-            }
-        }
 
         function isMobileDevice() {
             return window.matchMedia("(max-width: 767px)").matches;
         }
 
     </script>
+
+    <script type="module">
+        import * as pdfjsLib from 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.6.82/pdf.min.mjs';
+
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.6.82/pdf.worker.min.mjs';
+
+        const printButton = document.getElementById('print-button');
+
+        if (null != printButton) {
+
+            printButton.addEventListener('click', async () => {
+
+                var pdfFile = document.getElementById("pdfFile").value;
+
+                if (isMobileDevice()) {
+
+                    const divLog = document.getElementById("div-log");
+                    divLog.innerHTML = 'Loading ...';
+
+                    var pdfUrl = '/files/uploads/' + pdfFile;
+
+                    const printContainer = document.getElementById('print-container');
+
+                    const loadingTask = pdfjsLib.getDocument(pdfUrl);
+                    const pdf = await loadingTask.promise;
+
+                    // Clear previous canvases if any
+                    printContainer.innerHTML = '';
+
+                    for (let i = 1; i <= pdf.numPages; i++) {
+
+                        divLog.innerHTML = 'Loading ' + i + " of " + pdf.numPages;
+
+                        const page = await pdf.getPage(i);
+                        const viewport = page.getViewport({ scale: 1.5 }); // Adjust scale as needed for print quality
+
+                        const canvas = document.createElement('canvas');
+                        const context = canvas.getContext('2d');
+
+                        canvas.height = viewport.height;
+                        canvas.width = viewport.width;
+
+                        printContainer.appendChild(canvas);
+
+                        const renderContext = {
+                            canvasContext: context,
+                            viewport: viewport
+                        };
+
+                        await page.render(renderContext).promise;
+                    }
+
+                    $('body > :not(#print-container)').hide(); 
+                    $('#print-container').appendTo('body');
+
+                    setTimeout(function () {
+                        try {
+                            if (!document.execCommand('print', false, null)) {
+                                window.print()
+                            }
+                        } catch {
+                            window.print()
+                        }
+                    }, 500);
+
+                }
+                else {
+
+                    var options = {
+                        printable: '/files/uploads/' + pdfFile,
+                        type: "pdf"
+                    };
+
+                    if (-1 !== navigator.userAgent.toLowerCase().indexOf('crios') || -1 !== navigator.userAgent.toLowerCase().indexOf('fxios')) {
+                        const printWindow = window.open('', '_blank');
+
+                        printWindow.document.write('<html><head><title>Print</title></head><body>');
+                        printWindow.document.write('<img style="height: 100%; width: auto;" src="' + options.printable + '"/>');
+                        printWindow.document.write('</body></html>');
+
+                        setTimeout(function () {
+                            printWindow.print();
+                            printWindow.close();
+                        }, 100);
+
+                    } else {
+                        printJS(options);
+                    }
+                }
+            });
+        }
+
+    </script>
+
 </asp:Content>
